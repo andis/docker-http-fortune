@@ -1,0 +1,8 @@
+service http
+{
+        socket_type = stream
+        protocol = tcp
+        wait = no
+        user = nobody
+        server = /srv/fortune_wrapper.sh
+}
