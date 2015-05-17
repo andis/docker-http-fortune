@@ -5,7 +5,7 @@ LENGTH=$((${#BODY} + 1)) # body + newline
 
 cat <<EOS
 HTTP/1.0 200 OK
-Content-Type: text/html
+Content-Type: text/plain; charset=utf-8
 Content-Length: ${LENGTH}
 
 ${BODY}
