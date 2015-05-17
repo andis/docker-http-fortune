@@ -1,11 +1,9 @@
 FROM debian:jessie
 
 RUN apt-get update -qq && \
-    apt-get install -y -qq --no-install-recommends xinetd fortune-mod fortunes && \
-    rm -rf /etc/xinetd.d/* /var/lib/apt/lists/*
+    apt-get install -y -qq --no-install-recommends ucspi-tcp-ipv6 fortune-mod fortunes && \
+    rm -rf /var/lib/apt/lists/*
 ADD fortune_wrapper.sh /srv/
-ADD fortune.xinetd /etc/xinetd.d/fortune
-
-EXPOSE 80
-
-CMD ["xinetd", "-dontfork"]
+EXPOSE 8080
+USER nobody
+CMD ["tcpserver", "-H", "0.0.0.0", "8080", "/srv/fortune_wrapper.sh"]
