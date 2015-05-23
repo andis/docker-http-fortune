@@ -1,7 +1,9 @@
 FROM debian:jessie
 
 RUN apt-get update -qq && \
-    apt-get install -y -qq --no-install-recommends ucspi-tcp-ipv6 fortune-mod fortunes && \
+    apt-get install -y -qq --no-install-recommends \
+            ucspi-tcp-ipv6 \
+            fortune-mod fortunes && \
     rm -rf /var/lib/apt/lists/*
 ADD fortune_wrapper.sh /srv/
 EXPOSE 8080
