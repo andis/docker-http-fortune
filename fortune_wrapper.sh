@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BODY="$(/usr/games/fortune)"
+BODY="$(/usr/bin/fortune)"
 LENGTH=$((${#BODY} + 1)) # body + newline
 
 cat <<EOS
