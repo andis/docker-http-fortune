@@ -1,10 +1,6 @@
-FROM debian:jessie
+FROM alpine:3.6
 
-RUN apt-get update -qq && \
-    apt-get install -y -qq --no-install-recommends \
-            ucspi-tcp-ipv6 \
-            fortune-mod fortunes && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk --no-cache add ucspi-tcp6 fortune
 ADD fortune_wrapper.sh /srv/
 EXPOSE 8080
 USER nobody
